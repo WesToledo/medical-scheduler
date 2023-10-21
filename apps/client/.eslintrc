@@ -8,14 +8,23 @@
     "plugin:@typescript-eslint/recommended",
     "eslint-config-prettier"
   ],
+  "plugins": ["eslint-import-resolver-alias"],
   "settings": {
     "react": {
       "version": "detect"
     },
     "import/resolver": {
       "node": {
-        "paths": ["src"],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "alias": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "map": [
+          ["@/components", "./src/components"],
+          ["@/pages", "./src/pages"],
+          ["@/schemas", "./src/schemas"],
+          ["@/components", "./src/components"]
+        ]
       }
     }
   },
