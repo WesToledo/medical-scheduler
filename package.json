@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "server": "dotenv -- turbo server",
+    "web": "dotenv -- turbo web",
+    "build": "turbo run build",
+    "start": "node apps/api/dist/main"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.3.0",
+    "turbo": "^1.10.15"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
