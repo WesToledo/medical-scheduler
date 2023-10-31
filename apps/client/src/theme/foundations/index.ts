@@ -1,4 +1,5 @@
 import colors from './colors';
+import { components } from './components';
 
 export const foundations = {
   colors,
@@ -6,4 +7,5 @@ export const foundations = {
     heading: `'Open Sans', sans-serif`,
     body: `'Raleway', sans-serif`,
   },
+  components,
 };

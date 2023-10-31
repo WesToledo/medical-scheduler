@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import Sidebar from '@/components/Sidebar';
 import Datatable from '@/components/Datatable';
+import PatientFileModal from '@/components/PatientFileModal';
 
 export default function PatientsPage() {
   return (
@@ -21,6 +22,8 @@ export default function PatientsPage() {
         <Heading fontWeight={600} fontSize="3xl">
           Pacientes
         </Heading>
+
+        <PatientFileModal />
 
         <Box w="100%">
           <Datatable />

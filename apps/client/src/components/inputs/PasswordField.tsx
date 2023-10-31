@@ -30,7 +30,9 @@ export const PasswordField = ({ onChange, value }): Props => {
 
   return (
     <FormControl>
-      <FormLabel htmlFor="password">Password</FormLabel>
+      <FormLabel htmlFor="password" fontWeight="bold" fontSize="sm">
+        Password
+      </FormLabel>
       <InputGroup>
         <InputRightElement>
           <IconButton

@@ -55,7 +55,9 @@ export const Login = () => {
                         <Stack spacing="">
                           <Stack spacing="5">
                             <FormControl isInvalid={!!errors.email && touched.email}>
-                              <FormLabel>Email</FormLabel>
+                              <FormLabel fontWeight="bold" fontSize="sm">
+                                Email
+                              </FormLabel>
                               <Field as={Input} name="email" type="email" />
                               <ErrorMessage component={FormErrorMessage} name="email" />
                             </FormControl>
