@@ -1,9 +1,7 @@
-import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Input, Stack } from '@chakra-ui/react';
+import { Button, Flex, FormControl, FormErrorMessage, Stack } from '@chakra-ui/react';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-import * as Yup from 'yup';
-import { Upload } from '../UploadZone';
 import { Formik } from 'formik';
+import { Upload } from '../UploadZone';
 interface FormType {
   image: string;
   title: string;

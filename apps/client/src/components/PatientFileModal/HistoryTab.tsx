@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/react';
-import Table from '../Table';
-import { MUIDataTableColumn, MUIDataTableColumnDef, MUIDataTableProps } from 'mui-datatables';
 import { format } from 'date-fns';
+import { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
+import Table from '../Table';
 
 export default function HistoryTab() {
   const columns: MUIDataTableColumn[] = [
@@ -42,7 +42,7 @@ export default function HistoryTab() {
     search: false,
   };
 
-  const data = [
+  const data: MUIDataTableProps['data'] = [
     { date: format(new Date(), 'dd/MM/yyyy'), doctor: 'Renato', treatment: 'Ponte Ortodentaria', obs: 'N/A' },
   ];
 

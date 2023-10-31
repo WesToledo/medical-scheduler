@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/react';
-import Table from '../Table';
-import { MUIDataTableColumn, MUIDataTableColumnDef, MUIDataTableProps } from 'mui-datatables';
 import { format } from 'date-fns';
+import { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
+import Table from '../Table';
 
 export default function FinantialTab() {
   const columns: MUIDataTableColumn[] = [

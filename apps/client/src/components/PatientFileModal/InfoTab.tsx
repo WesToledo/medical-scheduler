@@ -1,23 +1,16 @@
-import { Logo } from '@/pages/Login/Logo';
-import { SignInSchema } from '@/schemas';
 import {
-  Container,
-  Stack,
-  Heading,
   FormControl,
-  FormLabel,
-  Input,
   FormErrorMessage,
+  FormLabel,
   HStack,
-  Button,
-  Box,
+  Input,
   Select,
-  Textarea,
+  Stack,
+  Textarea
 } from '@chakra-ui/react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 import InputMask from 'react-input-mask';
-import { PasswordField } from '../inputs/PasswordField';
 
 export default function InfoTab() {
   return (
