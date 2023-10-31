@@ -12,7 +12,7 @@ import {
   Center,
 } from '@chakra-ui/react';
 import Sidebar from '@/components/Sidebar';
-import Datatable from '@/components/Datatable';
+import Table from '@/components/Table';
 import PatientFileModal from '@/components/PatientFileModal';
 
 export default function PatientsPage() {
@@ -25,9 +25,7 @@ export default function PatientsPage() {
 
         <PatientFileModal />
 
-        <Box w="100%">
-          <Datatable />
-        </Box>
+        <Box w="100%"></Box>
       </Stack>
     </Sidebar>
   );

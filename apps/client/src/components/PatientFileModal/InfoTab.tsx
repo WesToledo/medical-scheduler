@@ -124,7 +124,7 @@ export default function InfoTab() {
                   <Field
                     as={() => (
                       <Textarea
-                        _hover={{ borderColor: 'primary' }}
+                        _hover={{ borderColor: 'primary.600' }}
                         placeholder="Obervações"
                         size="sm"
                         resize="vertical"

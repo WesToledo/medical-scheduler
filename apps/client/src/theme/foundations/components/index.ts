@@ -12,10 +12,10 @@ const Input: ComponentStyleConfig = {
         borderWidth: '2px',
         fontWeight: 'bold',
         _hover: {
-          borderColor: 'primary',
+          borderColor: 'primary.600',
         },
         _focus: {
-          borderColor: 'primary',
+          borderColor: 'primary.600',
         },
       },
     },
@@ -33,10 +33,10 @@ const Select: ComponentStyleConfig = {
       field: {
         fontWeight: 'bold',
         _hover: {
-          borderColor: 'primary',
+          borderColor: 'primary.600',
         },
         _focus: {
-          borderColor: 'primary',
+          borderColor: 'primary.600',
         },
       },
     },

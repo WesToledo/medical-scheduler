@@ -72,7 +72,7 @@ export const Login = () => {
                             </Button>
                           </HStack>
                           <Stack spacing="6">
-                            <Button type="submit" color="primary">
+                            <Button type="submit" color="primary.600">
                               Sign in
                             </Button>
                           </Stack>

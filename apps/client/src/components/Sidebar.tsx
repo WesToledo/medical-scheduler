@@ -89,7 +89,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 const NavItem = ({ icon, children, redirect }: NavItemProps) => {
   const style = location.pathname.includes(redirect)
-    ? { backgroundColor: 'primary', color: 'white', fontWeight: 'bold' }
+    ? { backgroundColor: 'primary.600', color: 'white', fontWeight: 'bold' }
     : undefined;
 
   return (
@@ -102,7 +102,7 @@ const NavItem = ({ icon, children, redirect }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'primary',
+          bg: 'primary.600',
           color: 'white',
           fontWeight: 'bold',
         }}

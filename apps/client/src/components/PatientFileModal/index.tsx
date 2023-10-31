@@ -1,5 +1,6 @@
 import {
   Button,
+  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -7,11 +8,13 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Stack,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
+  useBoolean,
   useDisclosure,
 } from '@chakra-ui/react';
 import { useState } from 'react';
@@ -22,7 +25,7 @@ import FinantialTab from './FinantialTab';
 
 export default function PatientFileModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [enableEdit, setEnableEdit] = useState(false);
+  const [editMode, setEditMode] = useBoolean();
 
   return (
     <>
@@ -35,12 +38,12 @@ export default function PatientFileModal() {
       </Button>
 
       <Modal isCentered isOpen={isOpen} onClose={onClose} size="4xl">
-        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) hue-rotate(90deg)" />
+        <ModalOverlay bg="whiteAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
           <ModalHeader>Ficha do Paciente</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Tabs>
+            <Tabs colorScheme="primary">
               <TabList mb="1em">
                 <Tab fontWeight="bold">Informações</Tab>
                 <Tab fontWeight="bold">Arquivos</Tab>
@@ -48,23 +51,34 @@ export default function PatientFileModal() {
                 <Tab fontWeight="bold">Faturação</Tab>
               </TabList>
               <TabPanels>
-                <TabPanel>
+                <TabPanel p={0}>
                   <InfoTab />
                 </TabPanel>
-                <TabPanel>
+                <TabPanel p={0}>
                   <ArquivesTab />
                 </TabPanel>
-                <TabPanel>
+                <TabPanel p={0}>
                   <HistoryTab />
                 </TabPanel>
-                <TabPanel>
+                <TabPanel p={0}>
                   <FinantialTab />
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </ModalBody>
           <ModalFooter>
-            {enableEdit ? <Button onClick={onClose}>Close</Button> : <Button onClick={onClose}>Close</Button>}
+            <HStack spacing={4}>
+              {editMode ? (
+                <Button colorScheme="primary" onClick={setEditMode.on}>
+                  Edit
+                </Button>
+              ) : (
+                <Button colorScheme="primary" onClick={setEditMode.off}>
+                  Save
+                </Button>
+              )}
+              <Button onClick={onClose}>Close</Button>
+            </HStack>
           </ModalFooter>
         </ModalContent>
       </Modal>
