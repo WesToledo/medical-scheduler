@@ -1,80 +1,106 @@
-import Datatable from '@/components/Datatable';
+import DatatableBase from '@/components/DatatableBase';
 import PatientFileModal from '@/components/PatientFileModal';
 import Sidebar from '@/components/Sidebar';
+import colors from '@/theme/foundations/colors';
+import EditIcon from '@mui/icons-material/Edit';
 import { InfoIcon } from '@chakra-ui/icons';
-import { Box, HStack, Heading, IconButton, Stack } from '@chakra-ui/react';
+import { Box, Heading, useDisclosure, Stack } from '@chakra-ui/react';
+import { IconButton } from '@mui/material';
 
 import { format } from 'date-fns';
 import { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
-import { MdPhone } from 'react-icons/md';
 
 export default function PatientsPage() {
-  const columns: MUIDataTableColumn[] = [
-    {
-      name: 'code',
-      label: 'Código',
-      options: {
-        sort: false,
-      },
-    },
-    {
-      name: 'name',
-      label: 'Nome',
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: 'birthdate',
-      label: 'Data de Nascimento',
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: 'email',
-      label: 'Email',
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: 'phone',
-      label: 'Telefone',
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: 'actions',
-      label: 'Ações',
-      options: {
-        sort: false,
-      },
-    },
-  ];
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const data: MUIDataTableProps['data'] = [
-    {
-      code: '#1234',
-      name: 'Paciente',
-      birthdate: format(new Date(), 'dd/MM/yyyy'),
-      email: 'mail@mail.com',
-      phone: '(11) 12334-43232',
-      actions: () => (
-        <Stack spacing={4}>
-          <IconButton aria-label="Call Sage" variant="outline" icon={<InfoIcon />}></IconButton>
-        </Stack>
-      ),
-    },
-  ];
+  const DataTable = () => {
+    const columns: MUIDataTableColumn[] = [
+      {
+        name: 'id',
+        label: '',
+        options: {
+          sort: false,
+          display: false,
+        },
+      },
+      {
+        name: 'code',
+        label: 'Código',
+        options: {
+          sort: false,
+        },
+      },
+      {
+        name: 'name',
+        label: 'Nome',
+        options: {
+          filter: true,
+          sort: false,
+        },
+      },
+      {
+        name: 'birthdate',
+        label: 'Data de Nascimento',
+        options: {
+          filter: true,
+          sort: false,
+        },
+      },
+      {
+        name: 'email',
+        label: 'Email',
+        options: {
+          filter: true,
+          sort: false,
+        },
+      },
+      {
+        name: 'phone',
+        label: 'Telefone',
+        options: {
+          filter: true,
+          sort: false,
+        },
+      },
+      {
+        name: 'actions',
+        label: 'Ações',
+        options: {
+          sort: false,
+        },
+      },
+    ];
 
-  const options: MUIDataTableProps['options'] = {
-    selectableRows: 'single',
+    const data: MUIDataTableProps['data'] = [
+      {
+        id: 23,
+        code: '#1234',
+        name: 'Paciente',
+        birthdate: format(new Date(), 'dd/MM/yyyy'),
+        email: 'mail@mail.com',
+        phone: '(11) 12334-43232',
+        actions: () => (
+          <IconButton aria-label="edit button" size="small" style={{ color: colors.primary[600] }}>
+            <EditIcon />
+          </IconButton>
+        ),
+      },
+    ];
+
+    const options: MUIDataTableProps['options'] = {
+      selectableRows: 'none',
+    };
+
+    return (
+      <DatatableBase
+        columns={columns}
+        data={data}
+        options={options}
+        showAddButton
+        addButtonText="Novo Paciente"
+        onClickAddButton={onOpen}
+      />
+    );
   };
 
   return (
@@ -84,12 +110,12 @@ export default function PatientsPage() {
           Pacientes
         </Heading>
 
-        <PatientFileModal />
-
-        <Box w="100%">
-          <Datatable columns={columns} data={data} options={options} showAddButton addButtonText="Novo Paciente" />
+        <Box>
+          <DataTable />
         </Box>
       </Stack>
+
+      <PatientFileModal isOpen={isOpen} onClose={onClose} />
     </Sidebar>
   );
 }

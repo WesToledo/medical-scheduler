@@ -1,10 +1,19 @@
-import { Stack } from '@chakra-ui/react';
+import { Heading, Stack } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
 import Table from '../Table';
+import { Typography } from '@mui/material';
 
 export default function HistoryTab() {
   const columns: MUIDataTableColumn[] = [
+    {
+      name: 'id',
+      label: 'id',
+      options: {
+        sort: false,
+        display: false,
+      },
+    },
     {
       name: 'date',
       label: 'Data',
@@ -43,12 +52,21 @@ export default function HistoryTab() {
   };
 
   const data: MUIDataTableProps['data'] = [
-    { date: format(new Date(), 'dd/MM/yyyy'), doctor: 'Renato', treatment: 'Ponte Ortodentaria', obs: 'N/A' },
+    { id: 23, date: format(new Date(), 'dd/MM/yyyy'), doctor: 'Renato', treatment: 'Ponte Ortodentaria', obs: 'N/A' },
   ];
 
   return (
     <Stack>
-      <Table columns={columns} data={data} title="" options={options} />
+      <Table
+        columns={columns}
+        data={data}
+        title={
+          <Typography variant="h6" fontWeight="bold">
+            Histórico de Consultas
+          </Typography>
+        }
+        options={options}
+      />
     </Stack>
   );
 }

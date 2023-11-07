@@ -8,6 +8,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  ModalProps,
   Stack,
   Tab,
   TabList,
@@ -23,26 +24,19 @@ import ArquivesTab from './ArquivesTab';
 import HistoryTab from './HistoryTab';
 import FinantialTab from './FinantialTab';
 
-export default function PatientFileModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+interface PatientFileModalProps extends ModalProps {}
+
+export default function PatientFileModal({ isOpen, onClose }: PatientFileModalProps) {
   const [editMode, setEditMode] = useBoolean();
 
   return (
     <>
-      <Button
-        onClick={() => {
-          onOpen();
-        }}
-      >
-        Open Modal
-      </Button>
-
       <Modal isCentered isOpen={isOpen} onClose={onClose} size="4xl">
         <ModalOverlay bg="whiteAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
           <ModalHeader>Ficha do Paciente</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody minHeight={550}>
             <Tabs colorScheme="primary">
               <TabList mb="1em">
                 <Tab fontWeight="bold">Informações</Tab>

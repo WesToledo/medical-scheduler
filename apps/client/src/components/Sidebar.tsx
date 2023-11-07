@@ -203,7 +203,7 @@ const Page = ({ children }) => {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        <Container maxW="full" border="2px solid #ccc" p={4}>
+        <Container maxW="full" p={4}>
           {children}
         </Container>
       </Box>

@@ -1,30 +1,33 @@
-import React from 'react';
 import CSS from 'csstype';
 import MUIDataTable, { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
-
+import EditIcon from '@mui/icons-material/Edit';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Button } from '@mui/material';
+import { Box, Button, IconButton } from '@mui/material';
 import colors from '@/theme/foundations/colors';
+import AddIcon from '@mui/icons-material/Add';
 
-const theme = createTheme();
+const theme = () =>
+  createTheme({
+    components: {
+      MuiTableRow: { styleOverrides: { root: { '&$hover:hover': { backgroundColor: colors.primary[600] } } } },
+    },
+  });
 
 interface TableProps extends MUIDataTableProps {
   onClose: () => void;
-  noMatch: string;
   columns: MUIDataTableColumn[];
-  headerStyles: { style: CSS.Properties };
-  cellStyles: { style: CSS.Properties };
-  showAddButton: boolean;
-  addButtonText: string;
-  onClickAddButton: () => void;
+  headerStyles?: { style: CSS.Properties };
+  cellStyles?: { style: CSS.Properties };
+  showAddButton?: boolean;
+  addButtonText?: string;
+  onClickAddButton?: () => void;
 }
 
-export default function Datatable({
+export default function DatatableBase({
   columns = [],
   data,
   title,
   options,
-  noMatch,
   headerStyles,
   cellStyles,
   showAddButton = false,
@@ -35,7 +38,7 @@ export default function Datatable({
   cellStyles = cellStyles ?? { style: { textAlign: 'center' } };
 
   options = {
-    rowsPerPage: 25,
+    rowsPerPage: 15,
     download: false,
     viewColumns: false,
     print: false,
@@ -77,18 +80,27 @@ export default function Datatable({
         deleteAria: 'Deletar Linha Selecionada',
       },
     },
+    onRowSelectionChange: (currentRowsSelected, allRowsSelected, rowsSelected) => {
+      console.log('rowsSelected', currentRowsSelected);
+    },
     customToolbar: showAddButton
-      ? () => (
-          <Button variant="contained" style={{ backgroundColor: colors.primary[600] }}>
+      ? (data) => (
+          <Button
+            startIcon={<AddIcon />}
+            sx={{ marginLeft: '1rem' }}
+            variant="contained"
+            style={{ backgroundColor: colors.primary[600] }}
+            onClick={onClickAddButton}
+          >
             {addButtonText}
           </Button>
         )
       : () => {},
-    customToolbarSelect: () => (
-      <Button variant="contained" style={{ backgroundColor: colors.primary[600] }}>
-        Add new Patient
-      </Button>
-    ),
+    // customToolbarSelect: () => (
+    //   <IconButton aria-label="edit button" style={{ backgroundColor: colors.primary[600], color: '#fff', marginRight: '1rem' }}>
+    //     <EditIcon />
+    //   </IconButton>
+    // ),
     ...options,
   };
 
@@ -108,7 +120,7 @@ export default function Datatable({
   });
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme()}>
       <MUIDataTable title={title} data={data} columns={columns} options={options} />
     </ThemeProvider>
   );

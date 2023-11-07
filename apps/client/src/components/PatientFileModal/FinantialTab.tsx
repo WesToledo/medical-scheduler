@@ -2,6 +2,7 @@ import { Stack } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
 import Table from '../Table';
+import { Typography } from '@mui/material';
 
 export default function FinantialTab() {
   const columns: MUIDataTableColumn[] = [
@@ -48,7 +49,16 @@ export default function FinantialTab() {
 
   return (
     <Stack>
-      <Table columns={columns} data={data} title="" options={options} />
+      <Table
+        columns={columns}
+        data={data}
+        title={
+          <Typography variant="h6" fontWeight="bold">
+            Histórico de Pagamentos
+          </Typography>
+        }
+        options={options}
+      />
     </Stack>
   );
 }
