@@ -9,3 +9,8 @@ export const DoctorSchema = yup.object().shape({
   name: yup.string().required('Required'),
   specialty: yup.string().required('Required'),
 });
+
+export const TreatmentSchema = yup.object().shape({
+  name: yup.string().required('Required'),
+  value: yup.number().moreThan(0, 'Valor deve ser maior que 0').required('Required'),
+});

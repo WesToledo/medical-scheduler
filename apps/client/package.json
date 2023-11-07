@@ -18,6 +18,7 @@
     "@fontsource/raleway": "^5.0.14",
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
+    "@syncfusion/ej2-react-schedule": "^23.1.44",
     "date-fns": "^2.30.0",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",

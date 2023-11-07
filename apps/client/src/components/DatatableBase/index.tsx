@@ -21,6 +21,7 @@ interface TableProps extends MUIDataTableProps {
   showAddButton?: boolean;
   addButtonText?: string;
   onClickAddButton?: () => void;
+  customToolbar?: React.Component | Element;
 }
 
 export default function DatatableBase({
@@ -33,6 +34,7 @@ export default function DatatableBase({
   showAddButton = false,
   addButtonText,
   onClickAddButton,
+  customToolbar,
 }: TableProps) {
   headerStyles = headerStyles ?? { style: { textAlign: 'center', fontWeight: 'bold', fontSize: '1rem' } };
   cellStyles = cellStyles ?? { style: { textAlign: 'center' } };
@@ -85,17 +87,22 @@ export default function DatatableBase({
     },
     customToolbar: showAddButton
       ? (data) => (
-          <Button
-            startIcon={<AddIcon />}
-            sx={{ marginLeft: '1rem' }}
-            variant="contained"
-            style={{ backgroundColor: colors.primary[600] }}
-            onClick={onClickAddButton}
-          >
-            {addButtonText}
-          </Button>
+          <>
+            <Button
+              startIcon={<AddIcon />}
+              sx={{ marginLeft: '1rem' }}
+              variant="contained"
+              style={{ backgroundColor: colors.primary[600] }}
+              onClick={onClickAddButton}
+            >
+              {addButtonText}
+            </Button>
+            {customToolbar}
+          </>
         )
-      : () => {},
+      : () => {
+          customToolbar;
+        },
     // customToolbarSelect: () => (
     //   <IconButton aria-label="edit button" style={{ backgroundColor: colors.primary[600], color: '#fff', marginRight: '1rem' }}>
     //     <EditIcon />

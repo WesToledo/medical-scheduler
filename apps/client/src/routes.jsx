@@ -1,16 +1,15 @@
-import { BrowserRouter, Route, Routes as Router } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes as Router } from 'react-router-dom';
 
-import { Login } from './pages/Login';
 import PrivateRoutes from './components/PrivateRoute';
+import { Login } from './pages/Login';
 import TodayPage from './pages/Today';
 
-import PatientsPage from './pages/Patients';
-import TreatmentsPage from './pages/Treatments';
-import FinantialPage from './pages/Finantial';
-import DoctorsPage from './pages/Doctors';
 import AppointmentsPage from './pages/Appointments';
 import ClinicPage from './pages/Clinic';
-import { Container } from '@chakra-ui/react';
+import DoctorsPage from './pages/Doctors';
+import FinantialPage from './pages/Finantial';
+import PatientsPage from './pages/Patients';
+import TreatmentsPage from './pages/Treatments';
 
 function Routes() {
   return (
@@ -27,6 +26,7 @@ function Routes() {
           <Route element={<ClinicPage />} path="/consultorio" />
         </Route>
         {/* OPEN ROUTES */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route element={<Login />} path="/login" />
       </Router>
     </BrowserRouter>
