@@ -1,0 +1,46 @@
+.e-active-view .e-tbar-btn-text {
+  color: #6551e4 !important;
+  font-weight: bold;
+}
+
+.e-header-day {
+  color: #6551e4 !important;
+  font-weight: bold;
+  font-size: 14px !important;
+}
+
+.e-header-date {
+  color: #6551e4 !important;
+  /* font-weight: bold; */
+}
+.e-current-day {
+  color: #6551e4 !important;
+}
+.e-current-date > .e-date-header {
+  background-color: #6551e4 !important;
+}
+
+.e-current-date > .e-date-header:hover {
+  font-weight: bold !important;
+  color: #fff !important;
+}
+
+.e-date-header:hover {
+  font-weight: bold !important;
+  color: #6551e4 !important;
+}
+
+.e-schedule .e-vertical-view .e-clone-time-indicator,
+.e-schedule .e-vertical-view .e-current-time {
+  color: #6551e4 !important;
+  font-size: 13px;
+  font-weight: bold !important;
+}
+
+.e-btn.e-flat.e-primary,
+.e-css.e-btn.e-flat.e-primary {
+  color: #6551e4 !important;
+}
+
+.e-cell .e-selected .e-focused-date .e-today span {
+}
