@@ -3,6 +3,9 @@ import CSS from 'csstype';
 import MUIDataTable, { MUIDataTableColumn, MUIDataTableProps } from 'mui-datatables';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import colors from '@/theme/foundations/colors';
 
 const theme = createTheme();
 
@@ -10,11 +13,28 @@ interface TableProps extends MUIDataTableProps {
   onClose: () => void;
   noMatch: string;
   columns: MUIDataTableColumn[];
-  headerStyles: { style: CSS.Properties };
-  cellStyles: { style: CSS.Properties };
+  headerStyles?: { style: CSS.Properties };
+  cellStyles?: { style: CSS.Properties };
+
+  showAddButton?: boolean;
+  addButtonText?: string;
+  onClickAddButton?: () => void;
+  customToolbar?: React.Component | Element;
 }
 
-export default function Table({ columns, data, title, options, noMatch, headerStyles, cellStyles }: TableProps) {
+export default function TableBase({
+  columns,
+  data,
+  title,
+  options,
+  noMatch,
+  headerStyles,
+  cellStyles,
+  showAddButton = false,
+  addButtonText,
+  onClickAddButton,
+  customToolbar,
+}: TableProps) {
   headerStyles = headerStyles ?? { style: { textAlign: 'center', fontWeight: 'bold', fontSize: '1rem' } };
   cellStyles = cellStyles ?? { style: { textAlign: 'center' } };
 
@@ -62,6 +82,25 @@ export default function Table({ columns, data, title, options, noMatch, headerSt
         deleteAria: 'Deletar Linha Selecionada',
       },
     },
+    customToolbar: showAddButton
+      ? (data) => (
+          <>
+            <Button
+              startIcon={<AddIcon />}
+              sx={{ marginLeft: '1rem' }}
+              variant="contained"
+              size="small"
+              style={{ backgroundColor: colors.primary[600] }}
+              onClick={onClickAddButton}
+            >
+              {addButtonText}
+            </Button>
+            {customToolbar}
+          </>
+        )
+      : () => {
+          customToolbar;
+        },
     ...options,
   };
 

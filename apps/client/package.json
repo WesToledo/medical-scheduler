@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
     "@syncfusion/ej2-react-schedule": "^23.1.44",
+    "chakra-react-select": "^4.7.6",
     "cldr-data": "^36.0.1",
     "date-fns": "^2.30.0",
     "ej2-locale": "^17.1.48",

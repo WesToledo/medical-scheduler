@@ -1,45 +1,23 @@
-import {
-  Box,
-  Heading,
-  Container,
-  Text,
-  Button,
-  Stack,
-  Icon,
-  useColorModeValue,
-  createIcon,
-  Card,
-  CardBody,
-} from '@chakra-ui/react';
 import Sidebar from '@/components/Sidebar';
+import { Heading, Stack, useDisclosure } from '@chakra-ui/react';
 
-import {
-  Agenda,
-  Day,
-  EventRenderedArgs,
-  Inject,
-  Month,
-  PopupOpenEventArgs,
-  ScheduleComponent,
-  TimelineViews,
-  ViewDirective,
-  ViewsDirective,
-  Week,
-  WorkWeek,
-} from '@syncfusion/ej2-react-schedule';
-import { addDays, addHours, format } from 'date-fns';
-import { useRef } from 'react';
+import AddAppointmentModal from './components/AddAppointmentModal';
 import Scheduler from './components/Scheduler';
 
 export default function TodayPage() {
+  const { onClose, isOpen } = useDisclosure();
+
   return (
-    <Sidebar>
-      <Stack spacing="3">
-        <Heading fontWeight={600} fontSize="3xl">
-          Hoje
-        </Heading>
-        <Scheduler />
-      </Stack>
-    </Sidebar>
+    <>
+      <Sidebar>
+        <Stack spacing="3">
+          <Heading fontWeight={600} fontSize="3xl">
+            Hoje
+          </Heading>
+          <Scheduler data={[]} />
+        </Stack>
+      </Sidebar>
+      <AddAppointmentModal onClose={onClose} isOpen={true} />
+    </>
   );
 }
