@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'dist'),
+      exclude: ['api/*'],
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

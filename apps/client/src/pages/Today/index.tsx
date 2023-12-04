@@ -17,7 +17,7 @@ export default function TodayPage() {
           <Scheduler data={[]} />
         </Stack>
       </Sidebar>
-      <AddAppointmentModal onClose={onClose} isOpen={true} />
+      <AddAppointmentModal onClose={onClose} isOpen={false} />
     </>
   );
 }
