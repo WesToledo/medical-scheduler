@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'dist'),
+      exclude: ['api/*'],
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
